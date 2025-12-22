@@ -15,7 +15,7 @@ MonoBehaviour:
   className: Halberdier
   classDescription: Halberdiers are well balanced physically, while still having
     respectable resistance.
-  classSprite: {fileID: 0}
+  classSprite: {fileID: 21300000, guid: c39d4aca51bcfd6429e9e17d91b996d8, type: 3}
   healthPoints: 30
   attack: 12
   defense: 8

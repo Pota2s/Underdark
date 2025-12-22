@@ -18,6 +18,7 @@ public struct BattleContext
 
 public class Stage : MonoBehaviour
 {
+    [SerializeField] private CharacterStatistics testEnemyData;
     public static Stage instance;
 
     public CharacterObject characterObjectPrefab;
@@ -29,7 +30,6 @@ public class Stage : MonoBehaviour
 
     public CharacterObject selectedCharacter;
 
-    [SerializeField] private CharacterData testEnemyData;
     public void Awake()
     {
         if (instance != null)
@@ -63,7 +63,7 @@ public class Stage : MonoBehaviour
         for(int i = 0; i < PartyManager.instance.GetEnemyParty().Count;i++)
         {
             CharacterObject p = Instantiate(characterObjectPrefab);
-            p.InitializeCharacter(testEnemyData, new DumbEnemyActionSelector());
+            p.InitializeCharacter(new CharacterData(testEnemyData), new DumbEnemyActionSelector());
             enemyObjects.Add(p);
         }
 
