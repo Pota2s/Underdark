@@ -7,6 +7,8 @@ public class TargettingButton : MonoBehaviour
     [SerializeField] private Text text;
     private CharacterObject target;
     
+
+
     public void SetText(string buttonText)
     {
         text.text = buttonText;

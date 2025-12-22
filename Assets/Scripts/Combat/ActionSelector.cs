@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 public abstract class ActionSelector
 {
     public abstract IEnumerator SelectAction(
@@ -25,9 +26,10 @@ public class PlayerActionSelector : ActionSelector
 
         
         BattleUI_Master battleUI = BattleUI_Master.instance;
-        battleUI.enabled = true;
+        battleUI.Enable();
+        Debug.Log("PlayerActionSelector: Waiting for player to select an action.");
 
-        BattleUI_Master.instance.attackButton.onClick.AddListener(() =>
+        battleUI.attackButton.onClick.AddListener(() =>
         {
 
             Action_Base basicAction = actor.characterData.baseStatistics.basicAction;
@@ -57,7 +59,7 @@ public class PlayerActionSelector : ActionSelector
             }
         });
 
-        BattleUI_Master.instance.spellButton.onClick.AddListener(() =>
+        battleUI.spellButton.onClick.AddListener(() =>
         {
             Action_Base spellAction = null;
             battleUI.EnableSpellSelection(actor, (action) =>
@@ -103,16 +105,18 @@ public class PlayerActionSelector : ActionSelector
                     );
                 }
             });
-            battleUI.attackButton.interactable = false;
-            battleUI.spellButton.interactable = false;
-
 
         });
+
 
         while (!isDecided)
         {
             yield return null;
         }
+
+        battleUI.Disable();
+        battleUI.attackButton.onClick.RemoveAllListeners();
+        battleUI.spellButton.onClick.RemoveAllListeners();
 
         onComplete.Invoke(selectedAction, targets);
         yield break;
@@ -131,6 +135,6 @@ public class DumbEnemyActionSelector : ActionSelector
         List<CharacterObject> possibleTargets = context.playerCharacters.FindAll(c => !c.characterData.IsDead());
         CharacterObject target = possibleTargets[UnityEngine.Random.Range(0, possibleTargets.Count)];
         onComplete(selectedAction, new List<CharacterObject> { target });
-        yield break;
+        yield return new WaitForSeconds(1f);
     }
 }

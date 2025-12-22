@@ -30,12 +30,10 @@ public class BattleUI_Master : MonoBehaviour
         instance = this;
     }
 
-    private void OnEnable()
+    public void Enable()
     {
-        attackButton.onClick.RemoveAllListeners();
-        spellButton.onClick.RemoveAllListeners();
-        itemButton.onClick.RemoveAllListeners();
-        defendButton.onClick.RemoveAllListeners();
+
+        Debug.Log("Battle UI Enabled");
 
         attackButton.interactable = true;
         spellButton.interactable = true;
@@ -44,8 +42,10 @@ public class BattleUI_Master : MonoBehaviour
     }
 
 
-    private void OnDisable()
+    public void Disable()
     {
+        Debug.Log("Battle UI Disabled");
+
         attackButton.interactable = false;
         spellButton.interactable = false;
         itemButton.interactable = false;
@@ -65,9 +65,14 @@ public class BattleUI_Master : MonoBehaviour
             
             
             targettingButton.transform.SetParent(targettingContainer.transform, false);
-            targettingButton.SetText(character.characterData.characterName);
             targettingButton.SetTarget(character);
             targettingButton.SetEnabled(false);
+            if (character.characterData != null) { 
+                targettingButton.SetText(character.characterData.characterName);
+            } else
+            {
+                targettingButton.SetText("Empty");
+            }
         }
 
     }

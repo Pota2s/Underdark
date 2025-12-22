@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using System.Collections;
 using System;
+using Unity.VisualScripting;
 
 public struct BattleContext
 {
@@ -82,6 +83,14 @@ public class Stage : MonoBehaviour
         turnOrder.AddRange(playerObjects);
         turnOrder.AddRange(enemyObjects);
 
+        foreach(CharacterObject character in new List<CharacterObject>(turnOrder))
+        {
+            if (character.characterData == null)
+            {
+                turnOrder.Remove(character);
+            }
+        }
+
         turnOrder.Sort((a, b) => b.GetSpeed().CompareTo(a.GetSpeed()));
         while (true)
         {
@@ -91,6 +100,7 @@ public class Stage : MonoBehaviour
 
                 DescriptionManager.instance.SetDescription(character.characterData);
                 yield return character.TakeTurn(ctx);
+
             }
 
         }
