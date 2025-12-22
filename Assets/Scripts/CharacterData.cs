@@ -51,6 +51,8 @@ public class CharacterData : IDescribeable
         level = 1;
         experience = 0;
         experienceToNextLevel = 100;
+
+        AddMoves();
     }
 
     public CharacterData(CharacterStatistics data)
@@ -78,8 +80,28 @@ public class CharacterData : IDescribeable
 
         moves = new List<Action_Base> { data.basicAction };
         statuses = new List<Effect>();
+
+        AddMoves();
     }
 
+    public void AddMoves()
+    {
+        moves = new List<Action_Base> { baseStatistics.basicAction };
+        for (int i = 0; i <= level; i++)
+        {
+            if (baseStatistics.LevelingActions.ContainsKey(i))
+            {
+                List<Action_Base> newActions = baseStatistics.LevelingActions[i];
+                foreach (Action_Base action in newActions)
+                {
+                    if (!moves.Contains(action))
+                    {
+                        moves.Add(action);
+                    }
+                }
+            }
+        }
+    }
     public void CheckLevel()
     {
         while (experience >= experienceToNextLevel)

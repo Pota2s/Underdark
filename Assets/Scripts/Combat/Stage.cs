@@ -29,8 +29,6 @@ public class Stage : MonoBehaviour
 
     public List<CharacterObject> turnOrder;
 
-    public CharacterObject selectedCharacter;
-
     public void Awake()
     {
         if (instance != null)
@@ -71,8 +69,6 @@ public class Stage : MonoBehaviour
         turnOrder = new List<CharacterObject>();
         turnOrder.AddRange(playerObjects);
         turnOrder.AddRange(enemyObjects);
-
-        selectedCharacter = null;
 
         BattleUI_Master.instance.Setup();
     }

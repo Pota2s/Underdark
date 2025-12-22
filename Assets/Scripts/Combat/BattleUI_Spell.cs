@@ -7,7 +7,7 @@ public class BattleUI_Spell : MonoBehaviour
     [SerializeField] private SpellButton spellButtonPrefab;
     public void Populate(CharacterObject character, Action<Action_Base> action)
     {
-        List<Action_Base> spells = character.characterData.moves;
+        List<Action_Base> spells = new List<Action_Base>(character.characterData.moves);
 
         for (int i = transform.childCount - 1; i >= 0; i--)
         {

@@ -109,10 +109,7 @@ public class PlayerActionSelector : ActionSelector
         });
 
 
-        while (!isDecided)
-        {
-            yield return null;
-        }
+        yield return new WaitUntil(() => isDecided);
 
         battleUI.Disable();
         battleUI.attackButton.onClick.RemoveAllListeners();

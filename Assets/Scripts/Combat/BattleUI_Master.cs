@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
-using JetBrains.Annotations;
 
 public class BattleUI_Master : MonoBehaviour
 {
@@ -63,7 +62,6 @@ public class BattleUI_Master : MonoBehaviour
         foreach(CharacterObject character in characterObjects) { 
             TargettingButton targettingButton = Instantiate(TargettingButtonPrefab);
             
-            
             targettingButton.transform.SetParent(targettingContainer.transform, false);
             targettingButton.SetTarget(character);
             targettingButton.SetEnabled(false);
@@ -90,17 +88,24 @@ public class BattleUI_Master : MonoBehaviour
 
     public void EnableTargeting(List<CharacterObject> possibleTargets, Action<CharacterObject> onTargetSelected)
     {
+        Debug.Log("Enabling Targeting UI");
+        foreach(CharacterObject character in possibleTargets)
+        {
+            Debug.Log("Possible Target: " + character.characterData.characterName);
+        }
         targettingContainer.SetActive(true);
         foreach (TargettingButton button in targettingButtons)
         {
             if (possibleTargets.Contains(button.GetTarget()))
             {
+                Debug.Log($"{button.GetTarget()} is a target");
                 Button buttonComponent = button.GetComponent<Button>();
                 button.SetEnabled(true);
                 button.Bind(onTargetSelected);
             }
             else
             {
+                Debug.Log($"{button.GetTarget()} is not a target");
                 button.SetEnabled(false);
             }
         }
