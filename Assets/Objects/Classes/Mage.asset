@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e47fd3e6bf4645478025539894ab339, type: 3}
+  m_Name: Mage
+  m_EditorClassIdentifier: Assembly-CSharp::BaseStatistics
+  className: Mage
+  classDescription: Mages are offensive magic specialists, with multiple different
+    types of abilities for high damage output.
+  classSprite: {fileID: 21300000, guid: d20b11ca368588f429bd2e895e623f0b, type: 3}
+  healthPoints: 24
+  attack: 2
+  defense: 5
+  manaPoints: 16
+  affinity: 15
+  resistance: 8
+  speed: 4
+  luck: 2
+  basicAction: {fileID: 11400000, guid: 2ca51ec45e903e745926fba0764e15bc, type: 2}
+  statsPerLevel: []
+  actionsPerLevel:
+  - level: 1
+    actions:
+    - {fileID: 11400000, guid: 1b47590ff4e8a704e9848ca062e6a195, type: 2}

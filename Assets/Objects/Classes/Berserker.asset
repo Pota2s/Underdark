@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e47fd3e6bf4645478025539894ab339, type: 3}
+  m_Name: Berserker
+  m_EditorClassIdentifier: Assembly-CSharp::BaseStatistics
+  className: Berserker
+  classDescription: Berserkers are physically a strong class with high health, but
+    low defenses. They excel as bruisers.
+  classSprite: {fileID: 21300000, guid: b4526a2eea6243a4f9adfebd504f3b6c, type: 3}
+  healthPoints: 40
+  attack: 15
+  defense: 9
+  manaPoints: 8
+  affinity: 1
+  resistance: 2
+  speed: 5
+  luck: 5
+  basicAction: {fileID: 11400000, guid: 1587faf512075b9489532ebb3ab32a9b, type: 2}
+  statsPerLevel: []
+  actionsPerLevel: []
