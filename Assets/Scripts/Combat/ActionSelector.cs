@@ -129,7 +129,7 @@ public class DumbEnemyActionSelector : ActionSelector
     )
     {
         Action_Base selectedAction = actor.characterData.baseStatistics.basicAction;
-        List<CharacterObject> possibleTargets = context.playerCharacters.FindAll(c => !c.characterData.IsDead());
+        List<CharacterObject> possibleTargets = context.playerCharacters.FindAll(c => c.characterData != null &&!c.characterData.IsDead());
         CharacterObject target = possibleTargets[UnityEngine.Random.Range(0, possibleTargets.Count)];
         onComplete(selectedAction, new List<CharacterObject> { target });
         yield return new WaitForSeconds(1f);

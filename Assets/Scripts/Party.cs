@@ -38,8 +38,8 @@ public class Party : IEnumerable<CharacterData>
 		return true;
     }
 
-	public List<CharacterData> GetMembers() {
-		return members;
+	public IReadOnlyCollection<CharacterData> GetMembers() {
+		return members.AsReadOnly();
     }
 
 	public CharacterData GetMember(int index)

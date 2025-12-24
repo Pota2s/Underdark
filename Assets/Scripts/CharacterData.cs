@@ -10,6 +10,7 @@ public class CharacterData : IDescribeable
     public int maxHealthPoints;
     public int healthPoints;
     public int attack;
+    public int Attack { get;private set; }
     public int defense;
 
     public int maxManaPoints;
@@ -26,8 +27,6 @@ public class CharacterData : IDescribeable
 
     public List<Action_Base> moves;
     public List<Effect> statuses;
-
-    
 
     public CharacterData(CharacterStatistics data, string name)
     {

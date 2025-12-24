@@ -59,7 +59,9 @@ public class BattleUI_Master : MonoBehaviour
         List<CharacterObject> characterObjects = Stage.instance.GetPlayerParty();
         characterObjects.AddRange(Stage.instance.GetEnemyParty());
 
-        foreach(CharacterObject character in characterObjects) { 
+        targettingButtons = new List<TargettingButton>();
+
+        foreach (CharacterObject character in characterObjects) { 
             TargettingButton targettingButton = Instantiate(TargettingButtonPrefab);
             
             targettingButton.transform.SetParent(targettingContainer.transform, false);
@@ -71,6 +73,8 @@ public class BattleUI_Master : MonoBehaviour
             {
                 targettingButton.SetText("Empty");
             }
+
+            targettingButtons.Add(targettingButton);
         }
 
     }
@@ -89,13 +93,12 @@ public class BattleUI_Master : MonoBehaviour
     public void EnableTargeting(List<CharacterObject> possibleTargets, Action<CharacterObject> onTargetSelected)
     {
         Debug.Log("Enabling Targeting UI");
-        foreach(CharacterObject character in possibleTargets)
-        {
-            Debug.Log("Possible Target: " + character.characterData.characterName);
-        }
+
         targettingContainer.SetActive(true);
         foreach (TargettingButton button in targettingButtons)
         {
+            Debug.Log($"Checking if {button.GetTarget()} is a possible target {possibleTargets.Contains(button.GetTarget())}");
+            
             if (possibleTargets.Contains(button.GetTarget()))
             {
                 Debug.Log($"{button.GetTarget()} is a target");

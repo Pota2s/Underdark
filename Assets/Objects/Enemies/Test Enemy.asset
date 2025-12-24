@@ -21,8 +21,8 @@ MonoBehaviour:
   manaPoints: 0
   affinity: 0
   resistance: 0
-  speed: 0
+  speed: 1
   luck: 0
-  basicAction: {fileID: 0}
+  basicAction: {fileID: 11400000, guid: 6d39cbf2b19b77c4c85b1e6589c4839e, type: 2}
   statsPerLevel: []
   actionsPerLevel: []

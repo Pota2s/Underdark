@@ -25,5 +25,15 @@ MonoBehaviour:
   speed: 5
   luck: 5
   basicAction: {fileID: 11400000, guid: 1587faf512075b9489532ebb3ab32a9b, type: 2}
-  statsPerLevel: []
+  statsPerLevel:
+  - level: 2
+    stats:
+      healthPoints: 2
+      attack: 1
+      defense: 0
+      manaPoints: 0
+      affinity: 0
+      resistance: 0
+      speed: 0
+      luck: 0
   actionsPerLevel: []
